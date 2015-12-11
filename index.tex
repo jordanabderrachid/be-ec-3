@@ -171,4 +171,18 @@
         \label{tab:exo9}
         \end{table}
         
+        \section{Exercice XIII}
+        	On applique l'algorithme de \emph{clustering} \texttt{DBScan} à notre base de donnée, en faisant varier le nombre minimum de points par \emph{cluster}. On conserve le meilleur résultat.
+
+    	\begin{table}[h!]
+    		\centering
+    		\begin{tabular}{|c|c|c|c|c|}
+    		\hline
+    		Algo & MinPoints & Taux d'err & Play=yes mal placés & Play=no mal placés \\
+    		\hline
+    		DBScan & 3 & 28,57\% & 2 & 2\\
+    		\hline
+    		\end{tabular}
+    	\end{table}
+
 \end{document}
