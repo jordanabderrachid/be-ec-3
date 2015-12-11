@@ -5,9 +5,28 @@
 \usepackage[francais]{babel} % Spécifie que le document est en français
 
 \begin{document}
-	\title{BE 3 - Extraction de connaissances}
-	\author{Jordan \bsc{Abderrachid}\\ Thomas \bsc{Perrot}\\ Louis \bsc{Zawadski}}
+        \title{BE 3 - Extraction de connaissances}
+        \author{Jordan \bsc{Abderrachid}\\ Thomas \bsc{Perrot}\\ Louis \bsc{Zawadski}}
 
-	\maketitle
+        \maketitle
 
+        \section{Exercice II}
+        On applique l'algorithme \emph{SimpleKMeans} à la base de données \emph{weather.arff}. On obtient les résultats présentés dans le tableau ci-dessous.
+        
+        \begin{table}[h!]
+        \centering
+        \begin{tabular}{| l | l | l | l | l | l |}
+        \hline
+        Cluster & Outlook & Temperature & Humidity & Windy & Play \\
+        \hline
+        Cluster 0 & sunny & 75.9 & 84.1 & FALSE & yes \\
+        \hline
+        Cluster 1 & overcast & 69.4 & 77.2 & TRUE & yes \\
+        \hline
+
+        \end{tabular}
+        \caption{Centroïdes calculés par l'algorithme \emph{SimpleKMeans} avec 2 clusters}
+        \label{tab:exo_2}
+        \end{table}
+        
 \end{document}
