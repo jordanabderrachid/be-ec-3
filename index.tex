@@ -144,7 +144,7 @@
         \begin{tabular}{| c | c | c | c | c |}
         \hline
          Algo & Seed & Taux d'erreur & Faux négatifs & Faux positifs  \\
-	\hline
+         \hline
          EM & x & 35\% & 2 & 3 \\
          \hline
          
@@ -169,6 +169,23 @@
         \end{tabular}
         \caption{Valeurs les plus probables dans les clusters EM}
         \label{tab:exo_6}
+        \end{table}
+        
+        \section{Exercice XVIII}
+        On teste l'algorithme Cobweb avec différentes valeurs pour le \emph{CutOff}. On remarque que l'on obtient 2 clusters pour un \emph{CutOff} de 0,24. On obtient le résultat suivant : 
+        
+        \begin{table}[h!]
+        \centering
+        \begin{tabular}{| c | c | c | c | c |}
+        \hline
+         Algo & CutOff & Taux d'erreur & Faux négatifs & Faux positifs  \\
+         \hline
+         Cobweb & 0.24 & 35\% & 3 & 2 \\
+         \hline
+         
+        \end{tabular}
+        \caption{Résultats de l'algorithme Cobweb}
+        \label{tab:exo18}
         \end{table}
         
 \end{document}
