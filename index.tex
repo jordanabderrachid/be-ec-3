@@ -180,9 +180,26 @@
     		\hline
     		Algo & MinPoints & Taux d'err & Play=yes mal placés & Play=no mal placés \\
     		\hline
-    		DBScan & 3 & 28,57\% & 2 & 2\\
+    		\texttt{DBScan} & 3 & 28,57\% & 2 & 2\\
     		\hline
     		\end{tabular}
+    		\caption{Résultats de la méthode \texttt{DBScan} optimisant le nombre minimum de points par \emph{cluster}.}
+        	\label{tab:exo13}
     	\end{table}
 
+    	\section{Exercice XIV}
+    		On applique l'algorithme de \emph{clustering} \texttt{DBScan} à notre base de donnée, en faisaint varier la valeur de $\epsilon$, c'est à dire le rayon de chaque \emph{cluster}. On fixe le nombre minimum de points par cluster à 2. On conserve le meilleur résultat.
+
+		\begin{table}[h!]
+			\centering
+			\begin{tabular}{|c|c|c|c|c|}
+				\hline
+				Algo & $\epsilon$ & Taux d'err & Play=yes mal placés & Play=no mal placés \\
+				\hline
+				\texttt{DBScan} & 1,04 & 35,71\% & 1 & 4 \\
+				\hline
+			\end{tabular}
+			\caption{Résultats de la méthode \texttt{DBScan} optimisant le rayon de chaque \emph{cluster}.}
+        	\label{tab:exo14}
+		\end{table}
 \end{document}
