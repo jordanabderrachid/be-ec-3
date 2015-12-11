@@ -12,20 +12,24 @@
 
         \maketitle
 
+\section{Exercice I}
 
-        \section{Exercice 1}
-        \begin{table}[h!]
-            \centering
-        	\begin{tabular}{|c|c|c|c|c|c|}
-        		\hline
-        		Cluster & Outlook & Température & Humidity & Windy & Play \\
-        		\hline
-        		Cluster0 : & overcast & 72.0 & 90.0 & TRUE & yes \\
-        		\hline
-        		Cluster1 : & sunny & 85.0 & 85.0 & FALSE & no \\
-        		\hline
-        	\end{tabular}
-        \end{table}
+        On applique l'algorithme \emph{FarthestFirst} à la base de données \emph{weather.arff}. On obtient les résultats présentés dans le tableau ci-dessous.
+	\begin{table}[h!]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|c|}
+		\hline
+		Cluster & Outlook & Température & Humidity & Windy & Play \\
+		\hline
+		Cluster0 : & overcast & 72.0 & 90.0 & TRUE & yes \\
+		\hline
+		Cluster1 : & sunny & 85.0 & 85.0 & FALSE & no \\
+		\hline
+	\end{tabular}
+	\caption{Centroïdes calculés par l'algorithme \emph{FarthestFirst} avec 2 clusters}
+	\label{exo1}
+\end{table}
+
         \section{Exercice II}
         On applique l'algorithme \emph{SimpleKMeans} à la base de données \emph{weather.arff}. On obtient les résultats présentés dans le tableau ci-dessous.
         
@@ -48,6 +52,37 @@
         \section{Exercice III}
         On peut remarquer que les centroïdes des clusters sont beaucoup plus proches dans le cas de \emph{SimpleKMeans}. Par ailleurs, l'algorithme Fartherst-First génère un cluster correspondant à Play=no et un autre à Play=yes. On peut donc en déduire que l'algorithme qui maximise le plus la dispersion inter-cluster est l'algorithme Farthest-First.
         
+	\section{Exercice V}
+	On applique les successivement les algorithmes \emph{FarthestFirst } et \emph{SimpleKMeans} à la base de données \emph{weather.arff} en chochant l'option "Store clusters for visualization". On obtient les résultats présentés dans le tableau ci-dessous.
+
+	\begin{table}[h!]
+		\centering
+		\begin{tabular}{|l|c|l|c|}
+			\hline
+			Outlook : & overcast  & Outlook : & rainy \\
+			Windy : & TRUE & Windy : & TRUE \\
+			\hline
+			Outlook : & overcast & Outlook : & rainy \\
+			Windy : & FALSE & Windy : & FALSE \\
+			\hline
+		\end{tabular}
+		\caption{Combinaisons de valeurs de outlook et windy pour lesquelles toutes les instances appartiennent au cluster 0 pour la méthode \emph{FarthestFirst}.}
+		\label{tab:exo5-1}
+	\end{table}
+
+
+	\begin{table}[h!]
+		\centering
+		\begin{tabular}{|l|c|l|c|}
+			\hline
+			Outlook : & sunny & Outlook : & X \\
+			Windy : & FALSE & Windy : & X \\
+			\hline
+		\end{tabular}
+		\caption{Combinaisons de valeurs de outlook et windy pour lesquelles toutes les instances appartiennent au cluster 1 pour la méthode \emph{FarthestFirst}.}
+		\label{tab:exo5-1}
+	\end{table}
+
         \section{Exercice VI}
         On change le paramètre seed de l'algorithme \emph{SimpleKMeans}. On remarque que les clusters sont initialisés avec play=yes pour l'un et play=no pour l'autre.
         \begin{table}[h!]
