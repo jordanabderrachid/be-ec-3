@@ -174,4 +174,22 @@
 	\end{table}
 
 	\paragraph{Conclusion}Au vu des résultats précédents, l'algorithme qui génère le moins grand nombre d'erreurs est \emph{SimpleKMeans}.
+
+	\section{Exercice XII}
+	On visualise le meilleur résultat de l'exercice précédent, et on reporte dans un tableau ci-dessous les combinaisons de valeurs de outlook et windy pour lesquelles aucune erreur n'est commise.
+
+	\begin{table}[h!]
+		\centering
+		\begin{tabular}{|l|c|l|c|}
+			\hline
+			Outlook : & overcast  & Outlook : & rainy \\
+			Windy : & FALSE & Windy : & FALSE \\
+			\hline
+			Outlook : & sunny & Outlook : & X \\
+			Windy : & FALSE & Windy : & X \\
+			\hline
+		\end{tabular}
+		\caption{Combinaisons de valeurs de outlook et windy pour lesquelles aucune erreur n'est commise avec la méthode \emph{FarthestFirst} et seed=100.}
+		\label{tab:exo12}
+	\end{table}
 \end{document}
