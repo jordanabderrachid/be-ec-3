@@ -183,9 +183,30 @@
          Cobweb & 0.24 & 35\% & 3 & 2 \\
          \hline
          
+         
         \end{tabular}
         \caption{Résultats de l'algorithme Cobweb}
         \label{tab:exo18}
         \end{table}
+        
+        \section{Exercice XX (Bonus)}
+        On applique les algorithmes \emph{Cobweb} et \emph{EM} à la base de données titanic.arff. On obtient les résultats suivants :
+        \begin{table}[h!]
+        \centering
+        \begin{tabular}{| c | c | c | c | c |}
+        \hline
+         Algo & CutOff/Seed & Taux d'erreur & Faux négatifs & Faux positifs  \\
+         \hline
+         Cobweb & 0.175 & 22\% & 367 & 126 \\
+         \hline
+         EM & 10 & 46\% & 212 & 817 \\
+         \hline
+         
+        \end{tabular}
+        \caption{Comparaison Cobweb et EM sur la base titanic}
+        \label{tab:exo20}
+        \end{table}
+        
+        On peut déduire de ces résultats que l'algorithme Cobweb sont meilleurs que celui de l'algorithme EM.
         
 \end{document}
