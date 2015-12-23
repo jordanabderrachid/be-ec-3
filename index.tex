@@ -192,4 +192,37 @@
 		\caption{Combinaisons de valeurs de outlook et windy pour lesquelles aucune erreur n'est commise avec la méthode \emph{FarthestFirst} et seed=100.}
 		\label{tab:exo12}
 	\end{table}
+
+	\section{Exercice XXI}
+	On étudie les 6 clusters issus de la base de données Bank-data.csv. En analysant la proximité de chaque cluster avec les autres, on reporte dans un tableau le nombre de paramêtres similaires entre les différents clusters. Le résultat est visible dans le tableau ci-dessous. On regroupe alors les clusters en utilisant une méthode de clustering agglomérative. On trouve ainsi une proximitée très forte entre les clusters 1 et 2 (nouveau cluster $C_{1,2}$), puis 3 et 4 (nouveau cluster $C_{3,4}$), puis 3 et 5 (nouveau cluster $C_{3,4,5}$), puis 2 et 3 (nouveau cluster $C_{1,2,3,4,5}$). On a donc 2 clusters : $C_{1,2,3,4,5}$ et $C_6$.
+	
+	\begin{table}[h!]
+\centering
+\begin{tabular}{| c | c | c | c | c | c | c |}
+\hline
+Cluster & 1 & 2 & 3 & 4 & 5 & 6 \\
+\hline
+1 & 0 & 8 & 4 & 5 & 1 & 4 \\
+\hline
+2 & & 0 & 7 & 6 & 5 & 3 \\
+\hline
+3 & & & 0 & 8 & 7 & 3 \\
+\hline
+4 & & & & 0 & 4 & 3 \\
+\hline
+5 & & & & & 0 & 5 \\
+\hline
+
+\end{tabular}
+\caption{Nombre d'attributs proches entre clusters}
+\label{tab:exo20}
+\end{table}
+
+	\section{Exercice XXII}
+	Lorsque nous avons regroupé les clusters dans la question précédente, nous avons regardé des attibuts booléens. Ainsi, nous avons toujours considéré qu'un YES est plus proche d'un YES que d'un NO par exemple. Or, lorsqu'on regarde les pourcentage, on s'apperçoit que deux clusters qui semblaient séparés (l'un a l'attribut à YES, l'autre à NO) peuvent être proches en terme de pourcentage (voire être plus proches en pourcentage que deux YES ou deux NO). Il est donc important de regarder les pourcentages et pas seulement les résultats booléens lorsqu'on veut faire du clustering.
+
+	\section{Exercice XXIII}
+	En choississant deux clusters dans les options de Weka, on obtient au final deux clusters contenant respectivement 247 (41\%) et 353 (59\%) instances. Il semble que les attributs numériques ne sont pas pris en compte, car ceux-ci sont très proches dans les deux clusters. Les deux clusters se distinguent sur les attributs à deux valeurs suivants : "sex", "married" et "pep", les autres attributs sont similaires. Ces résultats diffèrent de ceux que nous avions trouvé, ce qui est normal dans la mesure où nous avions pris en compte les valeurs numériques dans nos calculs de distances.
+
+
 \end{document}
