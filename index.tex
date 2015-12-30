@@ -154,7 +154,7 @@
         \end{table}
         
         \section{Exercice XVII}
-        On peut relever les valeur les plus probables dans les clusters générés par la méthode EM :
+        On peut relever les valeurs les plus probables dans les clusters générés par la méthode EM :
         \begin{table}[h!]
         \centering
         \begin{tabular}{| l | l | l | l | l | l |}
@@ -208,5 +208,22 @@
         \end{table}
         
         On peut déduire de ces résultats que l'algorithme Cobweb sont meilleurs que celui de l'algorithme EM.
+        
+        \section{Exercice XXIV}
+        On applique K-means ++ à la base de données bank-data. On observerve les meilleurs résultats pour $seed = 10$. Pour cette valeur de seed on obtient les résultats suivants sur les 60 instances de test :
+        
+        \begin{table}[h!]
+        \centering
+        \begin{tabular}{| c | c | c | c | c |}
+        \hline
+         Algo & Seed & Taux d'erreur & Faux négatifs & Faux positifs  \\
+         \hline
+         K-means++ & 10 & 16\% & 4 & 6 \\
+         \hline
+         
+        \end{tabular}
+        \caption{Application de k-means ++}
+        \label{tab:exo24}
+        \end{table}
         
 \end{document}
