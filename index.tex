@@ -3,6 +3,8 @@
 \usepackage[utf8]{inputenc} % Définit l'encodage du document
 \usepackage[T1]{fontenc} % Définit l'encodage de la fonte
 \usepackage[francais]{babel} % Spécifie que le document est en français
+\usepackage{graphicx}
+\graphicspath{{.}}
 
 \usepackage{lipsum}
 
@@ -220,10 +222,59 @@
          \hline
          K-means++ & 10 & 16\% & 4 & 6 \\
          \hline
-         
         \end{tabular}
         \caption{Application de k-means ++}
         \label{tab:exo24}
         \end{table}
+        
+        \section{Exercice XXV}
+        On applique la méthode de classification J48 à l'ensemble de test en demandant de déterminer le cluster. On parvient à classer correctement toutes les instances grâce aux règles suivantes : 
+        \begin{table}[h!]
+        \centering
+        \begin{tabular}{l l l l}
+        Si pep=YES & & & \\
+         // & Si sex = FEMALE & & \\
+         // & // & Si car = NO & alors cluster NO \\
+         // & // & Si car = YES & alors cluster YES \\
+         // & Si sex = MALE & & alors cluster YES \\
+        Si pep = NO & & & \\
+         // & Si car = NO & & alors cluster NO \\
+         // & Si car = YES & & \\
+         // & // & Si sex = FEMALE & alors cluster NO \\
+         // & // & Si sex = MALE & alors cluster YES\\
+        \end{tabular}
+        \caption{Règles de classification de l'ensemble de test clusterisé}
+        \label{tab:exo25}
+        \end{table}
+        
+        \section{Exercice XXVI}
+        On applique K-means ++ à l'ensemble des instances de la base de données bank-data.
+        On obtient le meilleur résultat pour un seed de 52. On obtient alors les valeurs suivantes :
+        \begin{table}[h!]
+        \centering
+        \begin{tabular}{| c | c | c | c | c |}
+        \hline
+         Algo & Seed & Taux d'erreur & Faux négatifs & Faux positifs  \\
+         \hline
+         K-means++ & 52 & 42\% & 145 & 108 \\
+         \hline
+        \end{tabular}
+        \caption{Application de k-means ++}
+        \label{tab:exo26}
+        \end{table}
+        
+        On remarque que cette méthode de clustering n'est pas très efficace.
+        
+        
+        \section{Exercice XXVII}
+        On applique la méthode de classification J48 à la base de données ainsi clusterisée. On obtient les règles suivantes :
+        \begin{figure}[h!]
+        \centering
+        \includegraphics[scale=0.4]{regles27}
+        \caption{Règles de classification}
+        \label{fig:exo27}
+        \end{figure}
+
+        
         
 \end{document}
