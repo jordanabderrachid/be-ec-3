@@ -275,6 +275,67 @@
         \label{fig:exo27}
         \end{figure}
 
+        \section{Exercice XXVIII}
+        On applique la méthode EM (Expectation-Maximisation) à la base de données bank-data avec les paramètres par défaut.
         
+        On obtient les résultats suivants :
+        \begin{table}[h!]
+        \centering
+        \begin{tabular}{| c | c | c | c | c |}
+        \hline
+         Algo & Seed & nb plis & clusters & log-vraisemblance  \\
+         \hline
+         EM & 100 & 10 & 4 & -20,9 \\
+         \hline
+        \end{tabular}
+        \caption{Application de l'algorithme EM}
+        \label{tab:exo28}
+        \end{table}
         
+        On fait varier les différents paramètres.
+        
+        Le meilleur résultat est obtenu pour un seed de 50. On obtient alors le résultat suivant pour 10 plis :
+        \begin{table}[h!]
+        \centering
+        \begin{tabular}{| c | c | c | c | c |}
+        \hline
+         Algo & Seed & nb plis & clusters & log-vraisemblance  \\
+         \hline
+         EM & 50 & 10 & 5 & -18,5 \\
+         \hline
+        \end{tabular}
+        \caption{Meilleur résultat de l'algorithme EM}
+        \label{tab:exo282}
+        \end{table}
+        
+        \section{Exercice XXIX}
+        On active l'évaluation des clusters par l'appartenance à une classe. On remarque que ce mode associe un cluster à chacune des classes. Sachant qu'on chercher à mesurer l'efficacité des clusters par rapport à un variable pouvant appartenir à 2 classes différentes, on obtient le meilleur résultat lorsque l'on se limite à deux clusters, dans ce cas on peut arriver à classer correctement 58\% des instances, ce qui est très faible. 
+        
+        Suite à l'utilisation de l'algorithme EM, nous pouvons dire qu'il est peu aisé de régler celui-ci correctement, de plus la durée de l'apprentissage étant relativement longue sur nos machines (entre 20 et 30 secondes), tester les différents paramètres de la simulation peut prendre un temps considérable.
+        
+        \section{Exercice  XXX}
+        On choisit cette fois-ci la méthode MakeDensityBasedClusterer, que l'on applique successivement à Canopy, Cobweb, Hierarchical, EM et SimpleKMeans. On applique ces méthodes sur les données d'apprentissage Bank-data. On peut alors comparer la log-vraisemblance que l'on obtient :
+        
+        \begin{table}[h!]
+        \centering
+        \begin{tabular}{| c | c |}
+        \hline
+         Algo & log-vraisemblance  \\
+         \hline
+         Canopy & -22,12 \\
+         \hline
+         Cobweb & -22,04 \\
+         \hline
+         Hierarchichal & -22,09\\
+         \hline
+         EM & -21,65\\
+         \hline
+         SimpleKMeans & -22,18\\
+         \hline
+        \end{tabular}
+        \caption{Résultat pour le clusterer à base de densité}
+        \label{tab:exo30}
+        \end{table}
+        
+        On peut remarquer que les méthodes ont des logs-vraisemblance assez proche, et en cherchant à optimiser leur paramètres on pourrait probablement arriver à un classement différent.
 \end{document}
