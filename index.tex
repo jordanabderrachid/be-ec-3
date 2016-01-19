@@ -12,20 +12,24 @@
 
         \maketitle
 
+\section{Exercice I}
 
-        \section{Exercice 1}
-        \begin{table}[h!]
-            \centering
-        	\begin{tabular}{|c|c|c|c|c|c|}
-        		\hline
-        		Cluster & Outlook & Température & Humidity & Windy & Play \\
-        		\hline
-        		Cluster0 : & overcast & 72.0 & 90.0 & TRUE & yes \\
-        		\hline
-        		Cluster1 : & sunny & 85.0 & 85.0 & FALSE & no \\
-        		\hline
-        	\end{tabular}
-        \end{table}
+        On applique l'algorithme \emph{FarthestFirst} à la base de données \emph{weather.arff}. On obtient les résultats présentés dans le tableau ci-dessous.
+	\begin{table}[h!]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|c|}
+		\hline
+		Cluster & Outlook & Température & Humidity & Windy & Play \\
+		\hline
+		Cluster0 : & overcast & 72.0 & 90.0 & TRUE & yes \\
+		\hline
+		Cluster1 : & sunny & 85.0 & 85.0 & FALSE & no \\
+		\hline
+	\end{tabular}
+	\caption{Centroïdes calculés par l'algorithme \emph{FarthestFirst} avec 2 clusters}
+	\label{exo1}
+\end{table}
+
         \section{Exercice II}
         On applique l'algorithme \emph{SimpleKMeans} à la base de données \emph{weather.arff}. On obtient les résultats présentés dans le tableau ci-dessous.
         
@@ -48,6 +52,37 @@
         \section{Exercice III}
         On peut remarquer que les centroïdes des clusters sont beaucoup plus proches dans le cas de \emph{SimpleKMeans}. Par ailleurs, l'algorithme Fartherst-First génère un cluster correspondant à Play=no et un autre à Play=yes. On peut donc en déduire que l'algorithme qui maximise le plus la dispersion inter-cluster est l'algorithme Farthest-First.
         
+	\section{Exercice V}
+	On applique les successivement les algorithmes \emph{FarthestFirst } et \emph{SimpleKMeans} à la base de données \emph{weather.arff} en chochant l'option "Store clusters for visualization". On obtient les résultats présentés dans le tableau ci-dessous.
+
+	\begin{table}[h!]
+		\centering
+		\begin{tabular}{|l|c|l|c|}
+			\hline
+			Outlook : & overcast  & Outlook : & rainy \\
+			Windy : & TRUE & Windy : & TRUE \\
+			\hline
+			Outlook : & overcast & Outlook : & rainy \\
+			Windy : & FALSE & Windy : & FALSE \\
+			\hline
+		\end{tabular}
+		\caption{Combinaisons de valeurs de outlook et windy pour lesquelles toutes les instances appartiennent au cluster 0 pour la méthode \emph{FarthestFirst}.}
+		\label{tab:exo5-1}
+	\end{table}
+
+
+	\begin{table}[h!]
+		\centering
+		\begin{tabular}{|l|c|l|c|}
+			\hline
+			Outlook : & sunny & Outlook : & X \\
+			Windy : & FALSE & Windy : & X \\
+			\hline
+		\end{tabular}
+		\caption{Combinaisons de valeurs de outlook et windy pour lesquelles toutes les instances appartiennent au cluster 1 pour la méthode \emph{FarthestFirst}.}
+		\label{tab:exo5-1}
+	\end{table}
+
         \section{Exercice VI}
         On change le paramètre seed de l'algorithme \emph{SimpleKMeans}. On remarque que les clusters sont initialisés avec play=yes pour l'un et play=no pour l'autre.
         \begin{table}[h!]
@@ -99,7 +134,7 @@
         \caption{Couples Outlook-Windy appartenant au cluster 1}
         \label{tab:exo7_2}
         \end{table}
-        
+
         \section{Exercice VIII}
         On compare les résultats obtenus avec \emph{Farthest-First} et \emph{SimpleKMeans}. On peut remarquer que les couples de valeurs outlook-windy suivantes ont des clusters différents selon la classification : 
         \begin{table}[h!]
@@ -136,8 +171,100 @@
         \label{tab:exo9}
         \end{table}
         
-        
-        \section{Exercice XVI}
+
+	\section{Exercice X}
+	On execute les algorithmes \emph{FarthestFirst} et \emph{SimpleKMeans} en utilisant l'option Classes to clusters evaluation et en sélectionnant l'attribut play comme attribut de classe. Les résultats sont visibles sur le figure ci-dessous.
+
+	\begin{table}[h!]
+		\centering
+		\begin{tabular}{|c|c|c|}
+			\hline
+			Valeur / Méthode & \emph{FarthestFirst} & \emph{SimpleKMeans} \\
+			\hline
+			Nb. faux Positifs & 3 & 2 \\
+			\hline
+			Nb. faux Négatifs & 6 & 3 \\
+			\hline
+			Taux d'erreur & 35.7\% & 35.7\% \\
+			\hline
+		\end{tabular}
+		\caption{Comparaison de \emph{FarthestFirst} et \emph{SimpleKMeans} avec l'option Classes to Clusters evaluation avec play comme attribut de classe.}
+		\label{tab:exo10}
+	\end{table}
+
+	\section{Exercice XI}
+	On cherche le seed qui minimuse les erreurs commises par les algorithmes \emph{FarthestFirst} et \emph{SimpleKmeans} avec l'option Classes to clusters evaluation et en sélectionnant l'attribut play comme attribut de classe. On test pour seed valant 1, 10, 20, 50, 100 et 1000. Les meilleurs résultats sont consignés dans le tableau ci-dessous.
+
+	\begin{table}[h!]
+		\centering
+		\begin{tabular}{|c|c|c|c|c|}
+			\hline
+			SimpleKMeans & Seed & Taux d'err & Play=yes mal placées & Play=no mal placées \\
+			\hline
+			\emph{SimpleKMeans} & 100 & 28.6\% & 3 & 1 \\
+			\hline
+			\emph{FarthestFirst} & 1 & 35.7\% & 6 & 1 \\
+			\hline
+		\end{tabular}
+		\caption{Détermination de la meilleure valeur de seed pour les méthodes \emph{SimpleKMeans} et \emph{FarthestFirst}}
+		\label{tab:exo11}
+	\end{table}
+
+	\paragraph{Conclusion}Au vu des résultats précédents, l'algorithme qui génère le moins grand nombre d'erreurs est \emph{SimpleKMeans}.
+
+	\section{Exercice XII}
+	On visualise le meilleur résultat de l'exercice précédent, et on reporte dans un tableau ci-dessous les combinaisons de valeurs de outlook et windy pour lesquelles aucune erreur n'est commise.
+
+	\begin{table}[h!]
+		\centering
+		\begin{tabular}{|l|c|l|c|}
+			\hline
+			Outlook : & overcast  & Outlook : & rainy \\
+			Windy : & FALSE & Windy : & FALSE \\
+			\hline
+			Outlook : & sunny & Outlook : & X \\
+			Windy : & FALSE & Windy : & X \\
+			\hline
+		\end{tabular}
+		\caption{Combinaisons de valeurs de outlook et windy pour lesquelles aucune erreur n'est commise avec la méthode \emph{FarthestFirst} et seed=100.}
+		\label{tab:exo12}
+	\end{table}
+
+        \section{Exercice XIII}
+        	On applique l'algorithme de \emph{clustering} \texttt{DBScan} à notre base de donnée, en faisant varier le nombre minimum de points par \emph{cluster}. On conserve le meilleur résultat.
+
+    	\begin{table}[h!]
+    		\centering
+    		\begin{tabular}{|c|c|c|c|c|}
+    		\hline
+    		Algo & MinPoints & Taux d'err & Play=yes mal placés & Play=no mal placés \\
+    		\hline
+    		\texttt{DBScan} & 3 & 28,57\% & 2 & 2\\
+    		\hline
+    		\end{tabular}
+    		\caption{Résultats de la méthode \texttt{DBScan} optimisant le nombre minimum de points par \emph{cluster}.}
+        	\label{tab:exo13}
+    	\end{table}
+
+
+
+    	\section{Exercice XIV}
+    		On applique l'algorithme de \emph{clustering} \texttt{DBScan} à notre base de donnée, en faisaint varier la valeur de $\epsilon$, c'est à dire le rayon de chaque \emph{cluster}. On fixe le nombre minimum de points par cluster à 2. On conserve le meilleur résultat.
+
+		\begin{table}[h!]
+			\centering
+			\begin{tabular}{|c|c|c|c|c|}
+				\hline
+				Algo & $\epsilon$ & Taux d'err & Play=yes mal placés & Play=no mal placés \\
+				\hline
+				\texttt{DBScan} & 1,04 & 35,71\% & 1 & 4 \\
+				\hline
+			\end{tabular}
+			\caption{Résultats de la méthode \texttt{DBScan} optimisant le rayon de chaque \emph{cluster}.}
+        	\label{tab:exo14}
+		\end{table}
+
+      \section{Exercice XVI}
         On effectue l'algorithme EM pour différentes valeurs de seed. On obtient les mêmes résultats pour toutes les valeurs de seed de 1 à 1000, à savoir celle présentée dans le tableau ci-dessous : 
         \begin{table}[h!]
         \centering
@@ -187,5 +314,36 @@
         \caption{Résultats de l'algorithme Cobweb}
         \label{tab:exo18}
         \end{table}
-        
+
+	\section{Exercice XXI}
+	On étudie les 6 clusters issus de la base de données Bank-data.csv. En analysant la proximité de chaque cluster avec les autres, on reporte dans un tableau le nombre de paramêtres similaires entre les différents clusters. Le résultat est visible dans le tableau ci-dessous. On regroupe alors les clusters en utilisant une méthode de clustering agglomérative. On trouve ainsi une proximitée très forte entre les clusters 1 et 2 (nouveau cluster $C_{1,2}$), puis 3 et 4 (nouveau cluster $C_{3,4}$), puis 3 et 5 (nouveau cluster $C_{3,4,5}$), puis 2 et 3 (nouveau cluster $C_{1,2,3,4,5}$). On a donc 2 clusters : $C_{1,2,3,4,5}$ et $C_6$.
+	
+	\begin{table}[h!]
+\centering
+\begin{tabular}{| c | c | c | c | c | c | c |}
+\hline
+Cluster & 1 & 2 & 3 & 4 & 5 & 6 \\
+\hline
+1 & 0 & 8 & 4 & 5 & 1 & 4 \\
+\hline
+2 & & 0 & 7 & 6 & 5 & 3 \\
+\hline
+3 & & & 0 & 8 & 7 & 3 \\
+\hline
+4 & & & & 0 & 4 & 3 \\
+\hline
+5 & & & & & 0 & 5 \\
+\hline
+
+\end{tabular}
+\caption{Nombre d'attributs proches entre clusters}
+\label{tab:exo20}
+\end{table}
+
+	\section{Exercice XXII}
+	Lorsque nous avons regroupé les clusters dans la question précédente, nous avons regardé des attibuts booléens. Ainsi, nous avons toujours considéré qu'un YES est plus proche d'un YES que d'un NO par exemple. Or, lorsqu'on regarde les pourcentage, on s'apperçoit que deux clusters qui semblaient séparés (l'un a l'attribut à YES, l'autre à NO) peuvent être proches en terme de pourcentage (voire être plus proches en pourcentage que deux YES ou deux NO). Il est donc important de regarder les pourcentages et pas seulement les résultats booléens lorsqu'on veut faire du clustering.
+
+	\section{Exercice XXIII}
+	En choississant deux clusters dans les options de Weka, on obtient au final deux clusters contenant respectivement 247 (41\%) et 353 (59\%) instances. Il semble que les attributs numériques ne sont pas pris en compte, car ceux-ci sont très proches dans les deux clusters. Les deux clusters se distinguent sur les attributs à deux valeurs suivants : "sex", "married" et "pep", les autres attributs sont similaires. Ces résultats diffèrent de ceux que nous avions trouvé, ce qui est normal dans la mesure où nous avions pris en compte les valeurs numériques dans nos calculs de distances.
+
 \end{document}
