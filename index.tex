@@ -134,7 +134,7 @@
         \caption{Couples Outlook-Windy appartenant au cluster 1}
         \label{tab:exo7_2}
         \end{table}
-        
+
         \section{Exercice VIII}
         On compare les résultats obtenus avec \emph{Farthest-First} et \emph{SimpleKMeans}. On peut remarquer que les couples de valeurs outlook-windy suivantes ont des clusters différents selon la classification : 
         \begin{table}[h!]
@@ -171,6 +171,64 @@
         \label{tab:exo9}
         \end{table}
         
+	\section{Exercice X}
+	On execute les algorithmes \emph{FarthestFirst} et \emph{SimpleKMeans} en utilisant l'option Classes to clusters evaluation et en sélectionnant l'attribut play comme attribut de classe. Les résultats sont visibles sur le figure ci-dessous.
+
+	\begin{table}[h!]
+		\centering
+		\begin{tabular}{|c|c|c|}
+			\hline
+			Valeur / Méthode & \emph{FarthestFirst} & \emph{SimpleKMeans} \\
+			\hline
+			Nb. faux Positifs & 3 & 2 \\
+			\hline
+			Nb. faux Négatifs & 6 & 3 \\
+			\hline
+			Taux d'erreur & 35.7\% & 35.7\% \\
+			\hline
+		\end{tabular}
+		\caption{Comparaison de \emph{FarthestFirst} et \emph{SimpleKMeans} avec l'option Classes to Clusters evaluation avec play comme attribut de classe.}
+		\label{tab:exo10}
+	\end{table}
+
+	\section{Exercice XI}
+	On cherche le seed qui minimuse les erreurs commises par les algorithmes \emph{FarthestFirst} et \emph{SimpleKmeans} avec l'option Classes to clusters evaluation et en sélectionnant l'attribut play comme attribut de classe. On test pour seed valant 1, 10, 20, 50, 100 et 1000. Les meilleurs résultats sont consignés dans le tableau ci-dessous.
+
+	\begin{table}[h!]
+		\centering
+		\begin{tabular}{|c|c|c|c|c|}
+			\hline
+			SimpleKMeans & Seed & Taux d'err & Play=yes mal placées & Play=no mal placées \\
+			\hline
+			\emph{SimpleKMeans} & 100 & 28.6\% & 3 & 1 \\
+			\hline
+			\emph{FarthestFirst} & 1 & 35.7\% & 6 & 1 \\
+			\hline
+		\end{tabular}
+		\caption{Détermination de la meilleure valeur de seed pour les méthodes \emph{SimpleKMeans} et \emph{FarthestFirst}}
+		\label{tab:exo11}
+	\end{table}
+
+	\paragraph{Conclusion}Au vu des résultats précédents, l'algorithme qui génère le moins grand nombre d'erreurs est \emph{SimpleKMeans}.
+
+	\section{Exercice XII}
+	On visualise le meilleur résultat de l'exercice précédent, et on reporte dans un tableau ci-dessous les combinaisons de valeurs de outlook et windy pour lesquelles aucune erreur n'est commise.
+
+	\begin{table}[h!]
+		\centering
+		\begin{tabular}{|l|c|l|c|}
+			\hline
+			Outlook : & overcast  & Outlook : & rainy \\
+			Windy : & FALSE & Windy : & FALSE \\
+			\hline
+			Outlook : & sunny & Outlook : & X \\
+			Windy : & FALSE & Windy : & X \\
+			\hline
+		\end{tabular}
+		\caption{Combinaisons de valeurs de outlook et windy pour lesquelles aucune erreur n'est commise avec la méthode \emph{FarthestFirst} et seed=100.}
+		\label{tab:exo12}
+	\end{table}
+
         \section{Exercice XIII}
         	On applique l'algorithme de \emph{clustering} \texttt{DBScan} à notre base de donnée, en faisant varier le nombre minimum de points par \emph{cluster}. On conserve le meilleur résultat.
 
@@ -202,4 +260,5 @@
 			\caption{Résultats de la méthode \texttt{DBScan} optimisant le rayon de chaque \emph{cluster}.}
         	\label{tab:exo14}
 		\end{table}
+
 \end{document}
