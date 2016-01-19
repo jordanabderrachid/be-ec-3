@@ -3,6 +3,8 @@
 \usepackage[utf8]{inputenc} % Définit l'encodage du document
 \usepackage[T1]{fontenc} % Définit l'encodage de la fonte
 \usepackage[francais]{babel} % Spécifie que le document est en français
+\usepackage{graphicx}
+\graphicspath{{.}}
 
 \usepackage{lipsum}
 
@@ -281,7 +283,7 @@
         \end{table}
         
         \section{Exercice XVII}
-        On peut relever les valeur les plus probables dans les clusters générés par la méthode EM :
+        On peut relever les valeurs les plus probables dans les clusters générés par la méthode EM :
         \begin{table}[h!]
         \centering
         \begin{tabular}{| l | l | l | l | l | l |}
@@ -310,10 +312,32 @@
          Cobweb & 0.24 & 35\% & 3 & 2 \\
          \hline
          
+         
         \end{tabular}
         \caption{Résultats de l'algorithme Cobweb}
         \label{tab:exo18}
         \end{table}
+
+        \section{Exercice XX (Bonus)}
+        On applique les algorithmes \emph{Cobweb} et \emph{EM} à la base de données titanic.arff. On obtient les résultats suivants :
+        \begin{table}[h!]
+        \centering
+        \begin{tabular}{| c | c | c | c | c |}
+        \hline
+         Algo & CutOff/Seed & Taux d'erreur & Faux négatifs & Faux positifs  \\
+         \hline
+         Cobweb & 0.175 & 22\% & 367 & 126 \\
+         \hline
+         EM & 10 & 46\% & 212 & 817 \\
+         \hline
+         
+        \end{tabular}
+        \caption{Comparaison Cobweb et EM sur la base titanic}
+        \label{tab:exo20}
+        \end{table}
+        
+        On peut déduire de ces résultats que l'algorithme Cobweb sont meilleurs que celui de l'algorithme EM.
+        
 
 	\section{Exercice XXI}
 	On étudie les 6 clusters issus de la base de données Bank-data.csv. En analysant la proximité de chaque cluster avec les autres, on reporte dans un tableau le nombre de paramêtres similaires entre les différents clusters. Le résultat est visible dans le tableau ci-dessous. On regroupe alors les clusters en utilisant une méthode de clustering agglomérative. On trouve ainsi une proximitée très forte entre les clusters 1 et 2 (nouveau cluster $C_{1,2}$), puis 3 et 4 (nouveau cluster $C_{3,4}$), puis 3 et 5 (nouveau cluster $C_{3,4,5}$), puis 2 et 3 (nouveau cluster $C_{1,2,3,4,5}$). On a donc 2 clusters : $C_{1,2,3,4,5}$ et $C_6$.
@@ -345,5 +369,134 @@ Cluster & 1 & 2 & 3 & 4 & 5 & 6 \\
 
 	\section{Exercice XXIII}
 	En choississant deux clusters dans les options de Weka, on obtient au final deux clusters contenant respectivement 247 (41\%) et 353 (59\%) instances. Il semble que les attributs numériques ne sont pas pris en compte, car ceux-ci sont très proches dans les deux clusters. Les deux clusters se distinguent sur les attributs à deux valeurs suivants : "sex", "married" et "pep", les autres attributs sont similaires. Ces résultats diffèrent de ceux que nous avions trouvé, ce qui est normal dans la mesure où nous avions pris en compte les valeurs numériques dans nos calculs de distances.
+
+   
+        \section{Exercice XXIV}
+        On applique K-means ++ à la base de données bank-data. On observerve les meilleurs résultats pour $seed = 10$. Pour cette valeur de seed on obtient les résultats suivants sur les 60 instances de test :
+        
+        \begin{table}[h!]
+        \centering
+        \begin{tabular}{| c | c | c | c | c |}
+        \hline
+         Algo & Seed & Taux d'erreur & Faux négatifs & Faux positifs  \\
+         \hline
+         K-means++ & 10 & 16\% & 4 & 6 \\
+         \hline
+        \end{tabular}
+        \caption{Application de k-means ++}
+        \label{tab:exo24}
+        \end{table}
+        
+        \section{Exercice XXV}
+        On applique la méthode de classification J48 à l'ensemble de test en demandant de déterminer le cluster. On parvient à classer correctement toutes les instances grâce aux règles suivantes : 
+        \begin{table}[h!]
+        \centering
+        \begin{tabular}{l l l l}
+        Si pep=YES & & & \\
+         // & Si sex = FEMALE & & \\
+         // & // & Si car = NO & alors cluster NO \\
+         // & // & Si car = YES & alors cluster YES \\
+         // & Si sex = MALE & & alors cluster YES \\
+        Si pep = NO & & & \\
+         // & Si car = NO & & alors cluster NO \\
+         // & Si car = YES & & \\
+         // & // & Si sex = FEMALE & alors cluster NO \\
+         // & // & Si sex = MALE & alors cluster YES\\
+        \end{tabular}
+        \caption{Règles de classification de l'ensemble de test clusterisé}
+        \label{tab:exo25}
+        \end{table}
+        
+        \section{Exercice XXVI}
+        On applique K-means ++ à l'ensemble des instances de la base de données bank-data.
+        On obtient le meilleur résultat pour un seed de 52. On obtient alors les valeurs suivantes :
+        \begin{table}[h!]
+        \centering
+        \begin{tabular}{| c | c | c | c | c |}
+        \hline
+         Algo & Seed & Taux d'erreur & Faux négatifs & Faux positifs  \\
+         \hline
+         K-means++ & 52 & 42\% & 145 & 108 \\
+         \hline
+        \end{tabular}
+        \caption{Application de k-means ++}
+        \label{tab:exo26}
+        \end{table}
+        
+        On remarque que cette méthode de clustering n'est pas très efficace.
+        
+        
+        \section{Exercice XXVII}
+        On applique la méthode de classification J48 à la base de données ainsi clusterisée. On obtient les règles suivantes :
+        \begin{figure}[h!]
+        \centering
+        \includegraphics[scale=0.4]{regles27}
+        \caption{Règles de classification}
+        \label{fig:exo27}
+        \end{figure}
+
+        \section{Exercice XXVIII}
+        On applique la méthode EM (Expectation-Maximisation) à la base de données bank-data avec les paramètres par défaut.
+        
+        On obtient les résultats suivants :
+        \begin{table}[h!]
+        \centering
+        \begin{tabular}{| c | c | c | c | c |}
+        \hline
+         Algo & Seed & nb plis & clusters & log-vraisemblance  \\
+         \hline
+         EM & 100 & 10 & 4 & -20,9 \\
+         \hline
+        \end{tabular}
+        \caption{Application de l'algorithme EM}
+        \label{tab:exo28}
+        \end{table}
+        
+        On fait varier les différents paramètres.
+        
+        Le meilleur résultat est obtenu pour un seed de 50. On obtient alors le résultat suivant pour 10 plis :
+        \begin{table}[h!]
+        \centering
+        \begin{tabular}{| c | c | c | c | c |}
+        \hline
+         Algo & Seed & nb plis & clusters & log-vraisemblance  \\
+         \hline
+         EM & 50 & 10 & 5 & -18,5 \\
+         \hline
+        \end{tabular}
+        \caption{Meilleur résultat de l'algorithme EM}
+        \label{tab:exo282}
+        \end{table}
+        
+        \section{Exercice XXIX}
+        On active l'évaluation des clusters par l'appartenance à une classe. On remarque que ce mode associe un cluster à chacune des classes. Sachant qu'on chercher à mesurer l'efficacité des clusters par rapport à un variable pouvant appartenir à 2 classes différentes, on obtient le meilleur résultat lorsque l'on se limite à deux clusters, dans ce cas on peut arriver à classer correctement 58\% des instances, ce qui est très faible. 
+        
+        Suite à l'utilisation de l'algorithme EM, nous pouvons dire qu'il est peu aisé de régler celui-ci correctement, de plus la durée de l'apprentissage étant relativement longue sur nos machines (entre 20 et 30 secondes), tester les différents paramètres de la simulation peut prendre un temps considérable.
+        
+        \section{Exercice  XXX}
+        On choisit cette fois-ci la méthode MakeDensityBasedClusterer, que l'on applique successivement à Canopy, Cobweb, Hierarchical, EM et SimpleKMeans. On applique ces méthodes sur les données d'apprentissage Bank-data. On peut alors comparer la log-vraisemblance que l'on obtient :
+        
+        \begin{table}[h!]
+        \centering
+        \begin{tabular}{| c | c |}
+        \hline
+         Algo & log-vraisemblance  \\
+         \hline
+         Canopy & -22,12 \\
+         \hline
+         Cobweb & -22,04 \\
+         \hline
+         Hierarchichal & -22,09\\
+         \hline
+         EM & -21,65\\
+         \hline
+         SimpleKMeans & -22,18\\
+         \hline
+        \end{tabular}
+        \caption{Résultat pour le clusterer à base de densité}
+        \label{tab:exo30}
+        \end{table}
+        
+        On peut remarquer que les méthodes ont des logs-vraisemblance assez proche, et en cherchant à optimiser leur paramètres on pourrait probablement arriver à un classement différent.
 
 \end{document}
