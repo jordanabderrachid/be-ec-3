@@ -134,6 +134,42 @@
         \caption{Couples Outlook-Windy appartenant au cluster 1}
         \label{tab:exo7_2}
         \end{table}
+
+        \section{Exercice VIII}
+        On compare les résultats obtenus avec \emph{Farthest-First} et \emph{SimpleKMeans}. On peut remarquer que les couples de valeurs outlook-windy suivantes ont des clusters différents selon la classification : 
+        \begin{table}[h!]
+        \centering
+        \begin{tabular}{| c | c |}
+         \hline
+         Outlook & Windy \\
+         \hline
+         sunny & false \\
+         overcast & true \\
+         rainy & true\\
+         \hline
+        
+        \end{tabular}
+        \caption{Couples Outlook-Windy ayant des clusters différents}
+        \label{tab:exo8}
+        \end{table}
+        
+        \section{Exercice IX}
+        On affiche côte-à-côte les graphiques représentant l'appartenance au cluster et l'attribut play pour les couples de valeurs Outlook-Windy.
+        On remarque des différences pour les couples de valeur suivants :
+        \begin{table}[h!]
+        \centering
+        \begin{tabular}{| c | c |}
+         \hline
+         Outlook & Windy \\
+         \hline
+         sunny & false \\
+         sunny & true \\
+         \hline
+        
+        \end{tabular}
+        \caption{Couples Outlook-Windy ayant des valeurs de play et des clusters différents}
+        \label{tab:exo9}
+        \end{table}
         
 	\section{Exercice X}
 	On execute les algorithmes \emph{FarthestFirst} et \emph{SimpleKMeans} en utilisant l'option Classes to clusters evaluation et en sélectionnant l'attribut play comme attribut de classe. Les résultats sont visibles sur le figure ci-dessous.
@@ -192,4 +228,37 @@
 		\caption{Combinaisons de valeurs de outlook et windy pour lesquelles aucune erreur n'est commise avec la méthode \emph{FarthestFirst} et seed=100.}
 		\label{tab:exo12}
 	\end{table}
+
+        \section{Exercice XIII}
+        	On applique l'algorithme de \emph{clustering} \texttt{DBScan} à notre base de donnée, en faisant varier le nombre minimum de points par \emph{cluster}. On conserve le meilleur résultat.
+
+    	\begin{table}[h!]
+    		\centering
+    		\begin{tabular}{|c|c|c|c|c|}
+    		\hline
+    		Algo & MinPoints & Taux d'err & Play=yes mal placés & Play=no mal placés \\
+    		\hline
+    		\texttt{DBScan} & 3 & 28,57\% & 2 & 2\\
+    		\hline
+    		\end{tabular}
+    		\caption{Résultats de la méthode \texttt{DBScan} optimisant le nombre minimum de points par \emph{cluster}.}
+        	\label{tab:exo13}
+    	\end{table}
+
+    	\section{Exercice XIV}
+    		On applique l'algorithme de \emph{clustering} \texttt{DBScan} à notre base de donnée, en faisaint varier la valeur de $\epsilon$, c'est à dire le rayon de chaque \emph{cluster}. On fixe le nombre minimum de points par cluster à 2. On conserve le meilleur résultat.
+
+		\begin{table}[h!]
+			\centering
+			\begin{tabular}{|c|c|c|c|c|}
+				\hline
+				Algo & $\epsilon$ & Taux d'err & Play=yes mal placés & Play=no mal placés \\
+				\hline
+				\texttt{DBScan} & 1,04 & 35,71\% & 1 & 4 \\
+				\hline
+			\end{tabular}
+			\caption{Résultats de la méthode \texttt{DBScan} optimisant le rayon de chaque \emph{cluster}.}
+        	\label{tab:exo14}
+		\end{table}
+
 \end{document}
